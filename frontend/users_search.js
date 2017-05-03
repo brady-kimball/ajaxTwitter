@@ -1,5 +1,5 @@
 const APIUtil = require('./api_util.js');
-const FollowToggle = require('./follow_toggle.js')
+const FollowToggle = require('./follow_toggle.js');
 
 class UsersSearch {
   constructor(el) {
@@ -11,7 +11,6 @@ class UsersSearch {
 
   handleInput(event) {
     APIUtil.searchUsers(this.$input.val(), this.renderResults.bind(this));
-    // APIUtil.searchUsers(this.$input.val()).then( users => this.renderResults(users));
   }
 
   renderResults(users) {
