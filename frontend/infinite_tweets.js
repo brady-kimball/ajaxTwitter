@@ -7,6 +7,7 @@ class InfiniteTweets {
     this.$fetchMore = this.$el.find(".fetch-more");
     this.maxCreatedAt = null;
     this.$fetchMore.on("click", this.fetchTweets.bind(this));
+    this.$el.on("insert-tweet", this.insertTweet.bind(this));
   }
 
   fetchTweets(event) {
@@ -24,6 +25,14 @@ class InfiniteTweets {
       }
     });
 
+    return false;
+  }
+
+  insertTweet(event, tweet) {
+    let $li = $("<li></li>");
+    $li.text(JSON.stringify(tweet));
+    this.$feed.prepend($li);
+    this.maxCreatedAt = tweet.created_at;
   }
 
   insertTweets(tweets) {

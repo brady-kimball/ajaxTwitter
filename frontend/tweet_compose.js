@@ -39,12 +39,10 @@ class TweetCompose {
   }
 
   handleSuccess(tweet) {
-    this.clearInput();
     let $ul = $(this.$el.data("tweets-ul"));
-    let $li = $("<li></li>");
-    let tweetString = JSON.stringify(tweet);
-    $li.text(tweetString);
-    $ul.append($li);
+    $ul.trigger("insert-tweet", [tweet]);
+
+    this.clearInput();
   }
 }
 
