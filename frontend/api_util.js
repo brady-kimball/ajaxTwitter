@@ -1,4 +1,23 @@
 const APIUtil = {
+  createTweet: (formData, success) => {
+    return $.ajax({
+      url: "/tweets",
+      type: "POST",
+      data: formData,
+      dataType: "JSON",
+      success: success
+    });
+  },
+
+  fetchTweets: (data) => {
+    return $.ajax({
+      url: "/feed",
+      type: "GET",
+      dataType: "JSON",
+      data
+    });
+  },
+
   followUser: id => {
     return $.ajax({
       url: `/users/${id}/follow`,
@@ -27,15 +46,7 @@ const APIUtil = {
     });
   },
 
-  createTweet: (formData, success) => {
-    return $.ajax({
-      url: "/tweets",
-      type: "POST",
-      data: formData,
-      dataType: "JSON",
-      success: success
-    });
-  }
+
 };
 
 module.exports = APIUtil;
